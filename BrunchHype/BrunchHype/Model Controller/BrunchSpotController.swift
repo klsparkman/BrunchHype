@@ -13,7 +13,7 @@ class BrunchSpotController {
     
     // Mark: - Properties
     static let shared = BrunchSpotController()
-        
+    
     // Mark: - Fetched Results
     let fetchResultsController: NSFetchedResultsController<BrunchSpot>
     
@@ -23,7 +23,7 @@ class BrunchSpotController {
         let resultsController: NSFetchedResultsController<BrunchSpot> = NSFetchedResultsController(fetchRequest: request, managedObjectContext: CoreDataStack.context, sectionNameKeyPath: "tier", cacheName: nil)
         fetchResultsController = resultsController
         do {
-           try fetchResultsController.performFetch()
+            try fetchResultsController.performFetch()
         } catch {
             print("Could not perform the fetch \(error.localizedDescription)")
         }
@@ -42,9 +42,14 @@ class BrunchSpotController {
         saveToPersistentStore()
     }
     
+    func changeTier(for brunchSpot: BrunchSpot, with newTier: String) {
+        brunchSpot.tier = newTier
+        saveToPersistentStore()
+    }
+    
     func remove(brunchSpot: BrunchSpot) {
         CoreDataStack.context.delete(brunchSpot)
-        saveToPersistentStore()
+       // saveToPersistentStore()
     }
     
     // Mark: - Save to Persistent Store

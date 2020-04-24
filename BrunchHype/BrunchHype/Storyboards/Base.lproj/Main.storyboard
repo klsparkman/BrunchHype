@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="kdp-ZH-5nP">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="8V0-vN-tM0">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -7,16 +7,16 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Table View Controller-->
+        <!--Brunch Spot List Table View Controller-->
         <scene sceneID="EjP-bC-G0i">
             <objects>
-                <tableViewController id="VhZ-XF-WD9" sceneMemberID="viewController">
+                <tableViewController id="VhZ-XF-WD9" customClass="BrunchSpotListTableViewController" customModule="BrunchHype" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="uYs-7s-1yi">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="106" id="onM-6k-Bji" customClass="BrunchSpotTableViewCell" customModule="BrunchHype" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="brunchSpotCell" rowHeight="106" id="onM-6k-Bji" customClass="BrunchSpotTableViewCell" customModule="BrunchHype" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="414" height="106"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="onM-6k-Bji" id="x6W-2r-zvF">
@@ -43,7 +43,7 @@
                                                         <segment title="Meh"/>
                                                     </segments>
                                                     <connections>
-                                                        <action selector="tierChanged:" destination="onM-6k-Bji" eventType="valueChanged" id="pbw-dx-Hre"/>
+                                                        <action selector="tierChanged:" destination="onM-6k-Bji" eventType="valueChanged" id="f0c-iR-e5M"/>
                                                     </connections>
                                                 </segmentedControl>
                                             </subviews>
@@ -57,9 +57,8 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="brunchSpotNameLabel" destination="cy9-2u-hQj" id="FWg-D3-TMZ"/>
-                                    <outlet property="brunchTierSegmentedControl" destination="Sis-XA-MwF" id="Sh8-kR-xeE"/>
-                                    <segue destination="igG-bX-7YP" kind="show" identifier="toDetailVC" id="fns-qc-mE9"/>
+                                    <outlet property="brunchSpotNameLabel" destination="cy9-2u-hQj" id="nNo-9r-ag2"/>
+                                    <outlet property="brunchTierSegmentedController" destination="Sis-XA-MwF" id="jwL-PX-WoB"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -69,12 +68,16 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="uQK-vp-iTS">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="lBV-qO-hyO"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="lBV-qO-hyO">
+                            <connections>
+                                <action selector="addBrunchSpotButtonTapped:" destination="VhZ-XF-WD9" id="e5A-eC-OOg"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ssm-kD-1Fb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="828.98550724637687" y="-201.5625"/>
+            <point key="canvasLocation" x="1739.1304347826087" y="-201.5625"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="6fn-Ld-u8D">
@@ -85,7 +88,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="f4W-cz-GFk">
-                                <rect key="frame" x="30" y="213" width="354" height="629"/>
+                                <rect key="frame" x="30" y="169" width="354" height="673"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -93,7 +96,7 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="oIA-Bp-Hvn">
-                                <rect key="frame" x="30" y="162" width="354" height="32"/>
+                                <rect key="frame" x="30" y="118" width="354" height="32"/>
                                 <segments>
                                     <segment title="S"/>
                                     <segment title="A"/>
@@ -101,7 +104,7 @@
                                 </segments>
                             </segmentedControl>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Location name..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2OA-Tw-6KN">
-                                <rect key="frame" x="30" y="108" width="354" height="34"/>
+                                <rect key="frame" x="30" y="64" width="354" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
@@ -130,25 +133,25 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hhw-DV-fbo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1705.7971014492755" y="-202.23214285714286"/>
+            <point key="canvasLocation" x="2615.9420289855075" y="-202.23214285714286"/>
         </scene>
         <!--Navigation Controller-->
-        <scene sceneID="Pbg-7d-MkL">
+        <scene sceneID="RwI-hw-IKd">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="kdp-ZH-5nP" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="8V0-vN-tM0" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="aHh-wh-2LV">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Koj-BJ-iyP">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="VhZ-XF-WD9" kind="relationship" relationship="rootViewController" id="w7E-wD-kfN"/>
+                        <segue destination="VhZ-XF-WD9" kind="relationship" relationship="rootViewController" id="aJf-IR-w6Z"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="5Bo-f1-xAL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZAb-eg-IpT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-81.159420289855078" y="-201.5625"/>
+            <point key="canvasLocation" x="828.98550724637687" y="-201.5625"/>
         </scene>
     </scenes>
 </document>

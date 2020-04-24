@@ -2,7 +2,7 @@
 //  BrunchSpotTableViewCell.swift
 //  BrunchHype
 //
-//  Created by Karl Pfister on 4/23/20.
+//  Created by Kelsey Sparkman on 4/23/20.
 //  Copyright © 2020 Karl Pfister. All rights reserved.
 //
 
@@ -14,33 +14,35 @@ protocol BrunchSpotTableViewCellDelegate: class {
 
 class BrunchSpotTableViewCell: UITableViewCell {
 
+    // Mark: - Outlets
     @IBOutlet weak var brunchSpotNameLabel: UILabel!
-    @IBOutlet weak var brunchTierSegmentedControl: UISegmentedControl!
-
-    var delegate: BrunchSpotTableViewCellDelegate?
-
-    func updateCell(withBrunchSpot brunchSpot: BrunchSpot) {
+    @IBOutlet weak var brunchTierSegmentedController: UISegmentedControl!
+    
+    weak var delegate: BrunchSpotTableViewCellDelegate?
+    
+    func updateViews(withBrunchSpot brunchSpot: BrunchSpot) {
         brunchSpotNameLabel.text = brunchSpot.name
+        
         switch brunchSpot.tier {
-            case "S":
-                brunchTierSegmentedControl.selectedSegmentIndex = 0
-                backgroundColor = .cyan
-            case "A":
-            brunchTierSegmentedControl.selectedSegmentIndex = 1
+        case "S":
+            brunchTierSegmentedController.selectedSegmentIndex = 0
+            backgroundColor = .cyan
+        case "A":
+            brunchTierSegmentedController.selectedSegmentIndex = 1
             backgroundColor = .yellow
-            case "Meh":
-            brunchTierSegmentedControl.selectedSegmentIndex = 2
+        case "Meh":
+            brunchTierSegmentedController.selectedSegmentIndex = 2
+            backgroundColor = .lightGray
+        case "Unrated":
+            brunchTierSegmentedController.selectedSegmentIndex = -1
             backgroundColor = .darkGray
-            case "Unrated":
-                brunchTierSegmentedControl.selectedSegmentIndex = -1
-                backgroundColor = .green
-            default:
-            break
+        default:
+            brunchTierSegmentedController.selectedSegmentIndex = -1
         }
     }
-
+    
     @IBAction func tierChanged(_ sender: Any) {
         delegate?.brunchSpotTierUpdated(self)
     }
-
+    
 }
