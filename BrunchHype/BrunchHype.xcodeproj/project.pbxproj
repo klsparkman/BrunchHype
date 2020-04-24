@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		35F1019524526BF000B061CD /* BrunchSpot+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35F1019424526BF000B061CD /* BrunchSpot+Convenience.swift */; };
+		35F101972452700E00B061CD /* BrunchSpotController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35F101962452700E00B061CD /* BrunchSpotController.swift */; };
 		FB346EF62451FF7600B56A62 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB346EF52451FF7600B56A62 /* AppDelegate.swift */; };
 		FB346EF82451FF7600B56A62 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB346EF72451FF7600B56A62 /* SceneDelegate.swift */; };
 		FB346EFD2451FF7600B56A62 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB346EFB2451FF7600B56A62 /* Main.storyboard */; };
@@ -19,6 +20,7 @@
 
 /* Begin PBXFileReference section */
 		35F1019424526BF000B061CD /* BrunchSpot+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BrunchSpot+Convenience.swift"; sourceTree = "<group>"; };
+		35F101962452700E00B061CD /* BrunchSpotController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrunchSpotController.swift; sourceTree = "<group>"; };
 		FB346EF22451FF7600B56A62 /* BrunchHype.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BrunchHype.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB346EF52451FF7600B56A62 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FB346EF72451FF7600B56A62 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -110,6 +112,7 @@
 		FB346F18245208D600B56A62 /* Model Controller */ = {
 			isa = PBXGroup;
 			children = (
+				35F101962452700E00B061CD /* BrunchSpotController.swift */,
 			);
 			path = "Model Controller";
 			sourceTree = "<group>";
@@ -201,6 +204,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FB346F132452022600B56A62 /* CoreDataStack.swift in Sources */,
+				35F101972452700E00B061CD /* BrunchSpotController.swift in Sources */,
 				FB346EF62451FF7600B56A62 /* AppDelegate.swift in Sources */,
 				FB346EF82451FF7600B56A62 /* SceneDelegate.swift in Sources */,
 				FB346F002451FF7600B56A62 /* BrunchHype.xcdatamodeld in Sources */,
