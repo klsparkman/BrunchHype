@@ -15,6 +15,19 @@ class BrunchSpotController {
     static let shared = BrunchSpotController()
         
     // Mark: - Fetched Results
+    let fetchResultsController: NSFetchedResultsController<BrunchSpot>
+    
+    init() {
+        let request: NSFetchRequest<BrunchSpot> = BrunchSpot.fetchRequest()
+        request.sortDescriptors = [NSSortDescriptor(key: "tier", ascending: true), NSSortDescriptor(key: "name", ascending: true)]
+        let resultsController: NSFetchedResultsController<BrunchSpot> = NSFetchedResultsController(fetchRequest: request, managedObjectContext: CoreDataStack.context, sectionNameKeyPath: "tier", cacheName: nil)
+        fetchResultsController = resultsController
+        do {
+           try fetchResultsController.performFetch()
+        } catch {
+            print("Could not perform the fetch \(error.localizedDescription)")
+        }
+    }
     
     // Mark: - CRUD functions
     func create(brunchSpotWith name: String) {
